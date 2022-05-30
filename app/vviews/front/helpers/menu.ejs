@@ -1,0 +1,14 @@
+
+<% 
+    menuList = ( items,link ) => {
+        let xhtml = '';
+        items.forEach((item) =>{
+            
+            xhtml += ` <a href="${link}/${item.slug}" target="blank" class="dropdown-item">${item.name}</a>`;
+        });
+
+        return `<div class="dropdown-menu my-active">
+                            ${xhtml}
+                        </div>`;
+    }
+%>

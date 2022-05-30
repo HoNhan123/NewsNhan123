@@ -1,0 +1,21 @@
+
+<% 
+    sliderTopNews = ( category,article,linkPrefix ) => {
+        let htmlTopNews = ``;
+        for(let i=0; i< category.length; i++){
+            let filterArticle=article.filter(e=> e.category.id == category[i].id);
+            htmlTopNews += `
+            <div class="col-md-6">
+                        <div class="tn-img">
+                            <img src="uploads/article/${filterArticle[0].avatar}" />
+                            <div class="tn-title">
+                                <a target="blank" href="${linkPrefix}/${category[i].slug}/${filterArticle[0].slug}">${filterArticle[0].name}</a>
+                            </div>
+                        </div>
+                    </div>
+            `
+                
+        };
+        return `<div class="row tn-slider">${htmlTopNews}</div>`
+    }
+%>

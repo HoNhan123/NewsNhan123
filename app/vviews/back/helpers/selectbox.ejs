@@ -1,0 +1,38 @@
+<% 
+    selectboxHelper = (name, items, optionSelected = '') => {
+        let xhtml = '';
+        items.forEach((item) =>{
+            let selected = (item.id == optionSelected) ? "selected" : '';
+            let id       = (item.id == undefined) ? 'allvalue' : item.id;
+            xhtml += `<option value="${id}" ${selected} >${item.name}</option>`;
+        });
+
+        return `<select id="sblBox" name="${name}"  class="form-control" >${xhtml}</select>`;
+    }
+%>
+
+<% 
+    selectedHelper = ( items, optionSelected,field,idArtical ) => {
+        let xhtml = '';
+        items.forEach((item) =>{
+            let selected = (item._id == optionSelected) ? "selected" : '';
+            let id       = (item._id == undefined) ? 'allvalue' : item._id;
+            xhtml += `<option value="${id}" ${selected} >${item.name}</option>`;
+        });
+
+        return `<select name="${field}" id='selectedCategory${idArtical}'  class="form-control td-relative" >${xhtml}</select>`;
+    }
+%>
+
+<% 
+    filterCategory = ( items, optionSelected,field,idArtical ) => {
+        let xhtml = '';
+        items.forEach((item) =>{
+            let selected = (item._id == optionSelected) ? "selected" : '';
+            let id       = (item._id == undefined) ? 'allvalue' : item._id;
+            xhtml += `<option value="${id}" ${selected} >${item.name}</option>`;
+        });
+
+        return `<select name="${field}" id='chooseCategory' data-link="${linkPrefix}filterCategory"  class="form-control td-relative" >${xhtml}</select>`;
+    }
+%>

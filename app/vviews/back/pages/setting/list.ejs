@@ -1,0 +1,107 @@
+<% include ./../../helpers/filter-status %>
+<% include ./../../helpers/action %>
+<% include ./../../helpers/pagination %>
+<% include ./../../helpers/status %>
+<% include ./../../helpers/sort %>
+<% include ./../../helpers/image %>
+<% 
+	const collection = "setting";
+	const linkPrefix = systemConfig.prefixAdmin + `/${collection}/`;
+    const folderUpload 	= 'uploads/setting/';
+   const id = setting._id;
+   
+%>
+<section class="content">
+    <div class="container-fluid">
+     
+        <div class="card card-info card-outline">
+            <form role="form" action="<%= linkPrefix %>save/" method="post" enctype="multipart/form-data" class="mb-0">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="form-group row">
+                        <label for="mail" class="col-sm-2 col-form-label text-sm-right required">Mail</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <input type="text" name="mail" value="<%= setting.mail%>" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="phone" class="col-sm-2 col-form-label text-sm-right required">Phone</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <input type="text" name="phone" value="<%= setting.phone %>" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="twitter" class="col-sm-2 col-form-label text-sm-right required">Twitter</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <input type="text" name="twitter" value="<%= setting.twitter %>" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="facebook" class="col-sm-2 col-form-label text-sm-right required">Facebook</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <input type="text" name="facebook" value="<%= setting.facebook%>" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="linkedin" class="col-sm-2 col-form-label text-sm-right required">Linkedin</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <input type="text" name="linkedin" value="<%= setting.linkedin %>" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="instagram" class="col-sm-2 col-form-label text-sm-right required">Instagram</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <input type="text" name="instagram" value="<%= setting.instagram %>" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="youtube" class="col-sm-2 col-form-label text-sm-right required">Youtube</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <input type="text" name="youtube" value="<%= setting.youtube %>" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    <div   class="form-group row">
+                        <label for="logo" class="col-sm-2 col-form-label text-sm-right required">Logo</label>
+                        <div  class="col-xs-12 col-sm-8">
+                            <input id="admin-file-upload" type="file" name="logo"  class="form-control form-control-sm">
+                            <img style="width:15%" id="admin-preview-image">
+                        </div>
+                    </div>
+                    <% if(id !== undefined && id !== ''){ %>
+                        <div id="imgFormShow" style="width: 20%;margin-left: 20%;" class="form-group row">
+                            <label></label>
+                            <%- imageHelp(folderUpload, setting.logo, 'logo', 'img-avatar-form'); %>
+                        </div>
+                    <%} %>
+               
+                    <input type="hidden" name="logo_old" value="<%= setting.logo %>" class="form-control">
+                    <input type="hidden" name="id" value="<%=id%>" class="form-control">
+                        </div>
+                         <div class="col-md-5">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-4 col-form-label text-sm-right required">Category Per Row</label>
+                        <div class="col-xs-12 col-sm-8">
+                            <input type="number" name="cate_per_row" value="<%= setting.cate_per_row%>" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+
+                   
+                    <div class="card-footer">
+                        <div class="col-12 col-sm-8 offset-sm-2">
+                            <button type="submit" class="btn btn-sm btn-success mr-1"> Submit </button>                                
+                            <a href="<%= linkPrefix %>/" class="btn btn-sm btn-danger mr-1"> Cancel</a>
+                        </div>
+                    </div>
+                
+                </div>
+                
+            </form>    
+            
+
+        </div>
+    </div>
+</section>
+<!-- /.content -->

@@ -1,0 +1,45 @@
+<% htmlArticle= (category, article, categoryPerRow)=> {
+    let htmlRow = ``;
+    let numberRows = (category.length)/categoryPerRow;
+    for(let i=0; i< numberRows; i++){ 
+        let htmlCategory=``; 
+        for(let j=i*categoryPerRow; j< (i+1)*categoryPerRow && j < category.length; j++){
+        let filterArticle=article.filter(e=> e.category.id == category[j].id);
+        let htmlArticle = ``;
+        for(let k=0; k< filterArticle.length; k++){
+            htmlArticle +=` 
+            <div class="col-md-${3*categoryPerRow}">
+            <div class="cn-img ">
+                <img  src="uploads/article/${filterArticle[k].avatar}"/>
+                <div class="cn-title">
+                    <a href="">${filterArticle[k].name}</a>
+                </div>
+            </div>
+            </div>
+            `
+            };
+
+            htmlCategory += `
+            <div class="col-md-${12/categoryPerRow}">
+                <h2>${category[j].name}</h2>
+                <div class="row cn-slider">
+                    ${htmlArticle}
+                </div>
+            </div>
+            `;
+            };
+            
+                htmlRow += `
+            <div class="cat-news">
+                <div class="container">
+                    <div class="row">
+                        ${htmlCategory}
+                    </div>
+                </div>
+                `;
+                };
+                return htmlRow;
+
+                }
+
+                %>
